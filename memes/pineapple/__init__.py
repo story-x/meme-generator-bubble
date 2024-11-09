@@ -13,12 +13,12 @@ def pineapple(images: List[BuildImage], texts, args):
 
     frames = []
     base = BuildImage.open(img_dir / "0.png").convert("RGBA")
-    avatar_size = (130, 130)  # 头像大小
-    avatar_position = (92, 135)  # 头像位置
+    avatar_size = (150, 150)  # 头像大小
+    avatar_position = (75, 120)  # 头像位置
 
     # 将第一张图片转换为 PIL 图像以处理 GIF 动图帧
     pil_image = images[0].image  # 获取 PIL.Image 实例
-    if pil_image.is_animated:
+    if pil_image.format == "GIF" and getattr(pil_image, "is_animated", False):
         # 遍历 GIF 动图的每一帧
         for frame in ImageSequence.Iterator(pil_image):
             frame = frame.convert("RGBA").resize(avatar_size)  # 调整大小
