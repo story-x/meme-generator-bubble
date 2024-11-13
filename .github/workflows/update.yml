@@ -3,10 +3,11 @@ name: Update memes.md
 on:
   push:
     branches:
-      - "main"
+      - "master"
     paths:
       - "memes/**"
-
+  workflow_dispatch:  # 允许手动触发工作流
+  
 jobs:
   update-and-push:
     runs-on: ubuntu-latest
